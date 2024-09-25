@@ -1,0 +1,107 @@
+{% load static %}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background: linear-gradient(135deg, #ff7e5f, #feb47b);">
+            <div class="modal-header" style="border-bottom: none;">
+                <h1 class="modal-title fs-5 text-center text-white" id="exampleModalLabel">
+                    <i class="fa-solid fa-plus-circle me-2"></i> Create a New Post
+                </h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-white" style="background-color: rgba(0, 0, 0, 0.1); border-radius: 15px;">
+                <form action="upload" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <!-- Image Upload Section -->
+                    <div class="mb-4 text-center">
+                        <label for="image-upload" class="form-label">
+                            <img src="{% static 'css/upload.png' %}" alt="" class="rounded-circle mb-2" style="width: 100px; height: 100px; border: 3px solid white;">
+                        </label>
+                        <input type="file" name="image_upload" class="form-control" id="image-upload" style="display: none;">
+                        <p class="text-light">Click to upload a photo</p>
+                    </div>
+                    <!-- Caption Section -->
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Caption</label>
+                        <textarea class="form-control" name="caption" placeholder="Write something amazing..." id="message-text" rows="3" maxlength="150"></textarea>
+                        <small class="form-text text-light">Max 150 characters</small>
+                    </div>
+            </div>
+            <div class="modal-footer justify-content-between" style="border-top: none;">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: rgba(255, 255, 255, 0.2); color: white; border: none;">
+                    <i class="fa-solid fa-times me-1"></i> Close
+                </button>
+                <button type="submit" class="btn btn-primary" style="background-color: #ff7e5f; border: none; transition: background-color 0.3s;">
+                    <i class="fa-solid fa-paper-plane me-1"></i> Create Post
+                </button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .modal-content {
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.3s;
+    }
+
+    .modal-content:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #ff7e5f, #feb47b);
+        border: none;
+        box-shadow: 0 4px 10px rgba(255, 126, 95, 0.4);
+        transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #feb47b, #ff7e5f);
+        box-shadow: 0 6px 15px rgba(255, 126, 95, 0.5);
+    }
+
+    .btn-secondary {
+        background: linear-gradient(135deg, #ddd, #ccc);
+        color: white;
+        border: none;
+        transition: background 0.3s;
+    }
+
+    .btn-secondary:hover {
+        background: linear-gradient(135deg, #bbb, #aaa);
+    }
+
+    .btn-close {
+        filter: invert(1);
+    }
+
+    .rounded-circle {
+        transition: transform 0.3s;
+    }
+
+    .rounded-circle:hover {
+        transform: scale(1.1);
+    }
+
+    /* Additional styles for modal body */
+    .modal-body {
+        border-radius: 15px;
+        padding: 20px;
+    }
+
+    /* Custom scrollbar */
+    .modal-body::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .modal-body::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+    }
+
+    .modal-body::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.2);
+    }
+</style>
